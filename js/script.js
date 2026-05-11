@@ -143,7 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fetch(scriptURL, { 
                 method: 'POST', 
-                body: new FormData(form)
+                mode: 'no-cors',
+                body: new URLSearchParams(new FormData(form))
             })
             .then(response => {
                 submitBtn.innerText = originalBtnText;
