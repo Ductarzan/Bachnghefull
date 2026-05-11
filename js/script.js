@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 6. Form Submission (Google Sheets Webhook)
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvkSh0MuKVm7EVk6UQ-VzLG_WhXfqMI4P5D5Y4VEhC7_MmJwBLmV_orDdOnk2XF3LcsQ/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzfTNG-sW3WV_zz8a5TY0c3VgIIfaHt_e5Tr38IU5FJKf3HYuiOl1Uk8nztm9HS13-zww/exec';
 
     const handleFormSubmit = (form, successMsg) => {
         form.addEventListener('submit', (e) => {
