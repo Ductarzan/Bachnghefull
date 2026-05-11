@@ -146,12 +146,13 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.forEach((value, key) => {
                 data[key] = value;
             });
+            
+            console.log("Dữ liệu gửi đi:", data); // Kiểm tra tại đây (nhấn F12)
 
-            // Gửi dữ liệu theo kiểu URLSearchParams để Apps Script nhận tốt nhất
-            fetch(scriptURL, { 
-                method: 'POST', 
-                mode: 'no-cors',
-                body: new URLSearchParams(data)
+            const queryString = new URLSearchParams(data).toString();
+            
+            fetch(`${scriptURL}?${queryString}`, { 
+                method: 'POST'
             })
             .then(() => {
                 submitBtn.innerText = originalBtnText;
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
-                console.error('Error!', error);
+                console.error('Lỗi gửi form:', error);
                 alert('Có lỗi xảy ra, vui lòng thử lại sau!');
             });
         });
