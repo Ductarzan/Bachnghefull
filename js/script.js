@@ -141,12 +141,19 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerText = 'Đang gửi...';
             submitBtn.disabled = true;
 
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Gửi dữ liệu theo kiểu URLSearchParams để Apps Script nhận tốt nhất
             fetch(scriptURL, { 
                 method: 'POST', 
                 mode: 'no-cors',
-                body: new URLSearchParams(new FormData(form))
+                body: new URLSearchParams(data)
             })
-            .then(response => {
+            .then(() => {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
                 alert(successMsg);
@@ -158,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
-                console.error('Error!', error.message);
-                alert('Có lỗi xảy ra, vui lòng thử lại sau hoặc liên hệ hotline!');
+                console.error('Error!', error);
+                alert('Có lỗi xảy ra, vui lòng thử lại sau!');
             });
         });
     };
