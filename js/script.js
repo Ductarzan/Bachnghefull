@@ -85,44 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // 5. Exit Intent Popup Logic
-    let exitPopupShown = false;
+    // 5. Exit Intent Popup Logic (disabled)
     const popupOverlay = document.getElementById('exitPopup');
-    const closePopupBtn = document.getElementById('closePopup');
-
-    const showPopup = () => {
-        if (!exitPopupShown) {
-            popupOverlay.classList.add('show');
-            exitPopupShown = true;
-            // Store in session storage so it doesn't annoy the user continuously
-            sessionStorage.setItem('exitPopupShown', 'true');
-        }
-    };
-
-    // Check session storage first
-    if (!sessionStorage.getItem('exitPopupShown')) {
-        // Desktop Exit Intent
-        document.addEventListener('mouseout', (e) => {
-            if (e.clientY < 50 && e.relatedTarget == null) {
-                showPopup();
-            }
-        });
-
-        // Mobile fallback (show after 30 seconds if not already shown)
-        setTimeout(() => {
-            showPopup();
-        }, 30000);
-    }
-
-    closePopupBtn.addEventListener('click', () => {
+    if (popupOverlay) {
         popupOverlay.classList.remove('show');
-    });
-
-    popupOverlay.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) {
-            popupOverlay.classList.remove('show');
-        }
-    });
+        popupOverlay.style.display = 'none';
+        sessionStorage.setItem('exitPopupShown', 'true');
+    }
 
     // 6. Form Submission (Google Sheets Webhook)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzfTNG-sW3WV_zz8a5TY0c3VgIIfaHt_e5Tr38IU5FJKf3HYuiOl1Uk8nztm9HS13-zww/exec';

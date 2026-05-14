@@ -1117,6 +1117,41 @@ select:focus {
 }
 
 @media (max-width: 768px) {
+    .main-header {
+        padding: 10px 0;
+    }
+
+    .header-container {
+        gap: 8px;
+    }
+
+    .logo {
+        gap: 8px;
+        min-width: 0;
+        flex: 1;
+    }
+
+    .logo img {
+        height: 38px;
+        flex-shrink: 0;
+    }
+
+    .logo h2 {
+        font-size: 15px;
+        line-height: 1.25;
+        white-space: normal;
+    }
+
+    .header-cta {
+        flex-shrink: 0;
+    }
+
+    .header-cta .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
     .desktop-nav {
         display: none;
     }
@@ -1155,6 +1190,19 @@ select:focus {
 }
 
 @media (max-width: 480px) {
+    .logo img {
+        height: 34px;
+    }
+
+    .logo h2 {
+        font-size: 13px;
+    }
+
+    .header-cta .btn {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
     .form-row {
         flex-direction: column;
         gap: 0;
