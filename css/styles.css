@@ -371,6 +371,14 @@ select:focus {
     border-color: var(--primary-red);
 }
 
+.major-focus-note {
+    display: block;
+    margin-top: 8px;
+    color: var(--primary-red);
+    font-weight: 600;
+    font-size: 12px;
+}
+
 .submit-btn {
     width: 100%;
     background: var(--primary-red);
@@ -546,6 +554,172 @@ select:focus {
     color: var(--success);
     margin-top: 4px;
     font-size: 12px;
+}
+
+.btn-outline {
+    border: 1px solid var(--primary-red);
+    color: var(--primary-red);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--primary-red);
+    color: var(--white);
+}
+
+/* Key Majors 2026 */
+.key-majors {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #fff7f2 0%, #ffffff 55%, #fff4f4 100%);
+}
+
+.key-majors-intro {
+    max-width: 980px;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+
+.key-majors-actions {
+    margin: 18px 0 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.key-majors-note {
+    color: #666;
+    font-size: 14px;
+}
+
+.major-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.major-stat {
+    background: var(--white);
+    border: 1px solid #f1d1d1;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.major-stat h3 {
+    color: var(--primary-red);
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.major-stat p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.key-diff {
+    background: #fff;
+    border: 1px solid #f0d9d9;
+    border-radius: 12px;
+    padding: 26px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 28px;
+}
+
+.key-diff h3 {
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+.key-diff-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+}
+
+.key-diff-list li {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 10px;
+    color: #444;
+}
+
+.key-diff-list i {
+    color: var(--success);
+    margin-top: 4px;
+}
+
+.major-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+}
+
+.major-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #f1dede;
+}
+
+.major-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.major-card-content {
+    padding: 24px;
+}
+
+.major-card-content h3 {
+    margin-bottom: 8px;
+    color: var(--primary-red);
+}
+
+.major-tagline {
+    font-weight: 600;
+    color: #2f2f2f;
+    margin-bottom: 10px;
+}
+
+.major-split {
+    margin: 14px 0 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.major-split h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--dark-text);
+}
+
+.major-split ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.major-split li {
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.tuition-highlight {
+    margin: 12px 0;
+    display: inline-block;
+    background: #fff0f0;
+    color: #b41f1f;
+    border: 1px solid #ffc7c7;
+    border-radius: 999px;
+    font-weight: 700;
+    padding: 7px 14px;
 }
 
 /* Programs Grid */
@@ -1094,6 +1268,14 @@ select:focus {
 
 /* Responsive */
 @media (max-width: 992px) {
+    .major-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .major-card img {
+        height: 280px;
+    }
+
     .hero-container {
         flex-direction: column;
     }
@@ -1117,6 +1299,14 @@ select:focus {
 }
 
 @media (max-width: 768px) {
+    .major-split {
+        grid-template-columns: 1fr;
+    }
+
+    .key-diff {
+        padding: 20px;
+    }
+
     .main-header {
         padding: 10px 0;
     }
@@ -1190,6 +1380,18 @@ select:focus {
 }
 
 @media (max-width: 480px) {
+    .major-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .major-card img {
+        height: 220px;
+    }
+
+    .major-card-content {
+        padding: 16px;
+    }
+
     .logo img {
         height: 34px;
     }

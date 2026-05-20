@@ -96,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Form Submission (Google Sheets Webhook)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzfTNG-sW3WV_zz8a5TY0c3VgIIfaHt_e5Tr38IU5FJKf3HYuiOl1Uk8nztm9HS13-zww/exec';
 
-    const handleFormSubmit = (form, successMsg) => {
+    const handleFormSubmit = (form) => {
+        if (!form) return;
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -126,11 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
-                alert(successMsg);
                 form.reset();
                 if (form.id === 'popupForm') {
                     popupOverlay.classList.remove('show');
                 }
+                window.location.href = 'thankyou.html';
             })
             .catch(error => {
                 submitBtn.innerText = originalBtnText;
@@ -141,15 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    handleFormSubmit(
-        document.getElementById('admissionForm'), 
-        'Chúc mừng bạn đã đăng ký thành công! Ban tuyển sinh sẽ liên hệ với bạn ngay để hướng dẫn hoàn thiện hồ sơ nhận học bổng.'
-    );
-
-    handleFormSubmit(
-        document.getElementById('popupForm'), 
-        'Cảm ơn bạn! Chúng tôi đã ghi nhận yêu cầu và giữ chỗ học bổng 50% cho bạn.'
-    );
+    handleFormSubmit(document.getElementById('admissionForm'));
+    handleFormSubmit(document.getElementById('popupForm'));
 
     // 7. Simulated Notification Bar Update
     const names = [
