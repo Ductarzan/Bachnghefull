@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
+    const pageUrl = window.location.href;
     const normalizeLeader = (value) => {
         if (!value) return '';
         const clean = value
@@ -107,11 +108,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. Form Submission (Google Sheets Webhook)
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzfTNG-sW3WV_zz8a5TY0c3VgIIfaHt_e5Tr38IU5FJKf3HYuiOl1Uk8nztm9HS13-zww/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzKme1lyvUXOTHtesdAL1bbqWgeuzGe5PNlc7uh_TteUiOXTR8KKVSZdKVJnDPc1tNQCQ/exec';
 
-    // Attach leader source to all forms for separate tracking (e.g. ?leader=hoai)
-    if (leaderParam) {
-        document.querySelectorAll('form').forEach((form) => {
+    // Attach tracking source fields to all forms
+    document.querySelectorAll('form').forEach((form) => {
+        let urlInput = form.querySelector('input[name="url"]');
+        if (!urlInput) {
+            urlInput = document.createElement('input');
+            urlInput.type = 'hidden';
+            urlInput.name = 'url';
+            form.appendChild(urlInput);
+        }
+        urlInput.value = pageUrl;
+
+        if (leaderParam) {
             let leaderInput = form.querySelector('input[name="leader"]');
             if (!leaderInput) {
                 leaderInput = document.createElement('input');
@@ -120,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.appendChild(leaderInput);
             }
             leaderInput.value = leaderParam;
-        });
-    }
+        }
+    });
 
     const handleFormSubmit = (form) => {
         if (!form) return;
@@ -143,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.forEach((value, key) => {
                 data[key] = value;
             });
+            data.url = pageUrl;
             if (leaderParam) {
                 data.leader = leaderParam;
             }
