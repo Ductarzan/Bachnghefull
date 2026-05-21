@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const normalizeLeader = (value) => {
+        if (!value) return '';
+        const clean = value
+            .trim()
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+        if (clean === 'hoai') return 'hoai';
+        if (clean === 'quynh') return 'quynh';
+        return '';
+    };
+    const leaderParam = normalizeLeader(urlParams.get('leader'));
     
     // 1. Countdown Timer Logic
     const countdownDate = new Date('August 31, 2026 23:59:59').getTime();
@@ -96,6 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Form Submission (Google Sheets Webhook)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzfTNG-sW3WV_zz8a5TY0c3VgIIfaHt_e5Tr38IU5FJKf3HYuiOl1Uk8nztm9HS13-zww/exec';
 
+    // Attach leader source to all forms for separate tracking (e.g. ?leader=hoai)
+    if (leaderParam) {
+        document.querySelectorAll('form').forEach((form) => {
+            let leaderInput = form.querySelector('input[name="leader"]');
+            if (!leaderInput) {
+                leaderInput = document.createElement('input');
+                leaderInput.type = 'hidden';
+                leaderInput.name = 'leader';
+                form.appendChild(leaderInput);
+            }
+            leaderInput.value = leaderParam;
+        });
+    }
+
     const handleFormSubmit = (form) => {
         if (!form) return;
         form.addEventListener('submit', (e) => {
@@ -116,6 +143,9 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.forEach((value, key) => {
                 data[key] = value;
             });
+            if (leaderParam) {
+                data.leader = leaderParam;
+            }
             
             console.log("Dữ liệu gửi đi:", data); // Kiểm tra tại đây (nhấn F12)
 
@@ -131,7 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (form.id === 'popupForm') {
                     popupOverlay.classList.remove('show');
                 }
-                window.location.href = 'thankyou.html';
+                window.location.href = leaderParam
+                    ? `thankyou.html?leader=${encodeURIComponent(leaderParam)}`
+                    : 'thankyou.html';
             })
             .catch(error => {
                 submitBtn.innerText = originalBtnText;
