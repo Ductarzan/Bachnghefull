@@ -282,6 +282,62 @@ h1, h2, h3, h4 {
     display: none;
 }
 
+.hero-sitelinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 0 0 30px;
+}
+
+.hero-sitelink {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: var(--transition);
+}
+
+.hero-sitelink:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.38);
+    transform: translateY(-3px);
+}
+
+.hero-sitelink-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-gold);
+    color: var(--dark-text);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-sitelink-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hero-sitelink-text strong {
+    color: var(--white);
+    font-size: 16px;
+}
+
+.hero-sitelink-text small {
+    color: rgba(255,255,255,0.88);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
 /* Hero Form */
 .hero-form {
     background: var(--white);
@@ -1268,6 +1324,10 @@ select:focus {
 
 /* Responsive */
 @media (max-width: 992px) {
+    .hero-sitelinks {
+        grid-template-columns: 1fr;
+    }
+
     .major-stats {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1380,6 +1440,14 @@ select:focus {
 }
 
 @media (max-width: 480px) {
+    .hero-sitelink {
+        padding: 14px;
+    }
+
+    .hero-sitelink-text strong {
+        font-size: 15px;
+    }
+
     .major-stats {
         grid-template-columns: 1fr;
     }
