@@ -229,6 +229,46 @@ h1, h2, h3, h4 {
     margin-right: 10px;
 }
 
+.hero-laptop-offer {
+    margin-bottom: 24px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 255, 255, 0.12) 100%);
+    border: 1px solid rgba(255, 193, 7, 0.45);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.hero-laptop-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--secondary-gold);
+    color: var(--dark-text);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero-laptop-offer h3 {
+    font-size: 28px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    color: var(--white);
+}
+
+.hero-laptop-offer h3 span {
+    color: var(--secondary-gold);
+}
+
+.hero-laptop-offer p {
+    margin: 0;
+    color: rgba(255,255,255,0.92);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
 /* Countdown */
 .countdown-wrapper {
     background: rgba(0,0,0,0.3);
@@ -1378,6 +1418,18 @@ select:focus {
 }
 
 @media (max-width: 768px) {
+    .hero-laptop-offer {
+        padding: 16px;
+    }
+
+    .hero-laptop-offer h3 {
+        font-size: 22px;
+    }
+
+    .hero-laptop-offer p {
+        font-size: 14px;
+    }
+
     .major-split {
         grid-template-columns: 1fr;
     }
