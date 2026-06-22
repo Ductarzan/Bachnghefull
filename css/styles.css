@@ -429,9 +429,28 @@ select:focus {
 
 .major-focus-note {
     display: block;
-    margin-top: 8px;
+    margin-top: 6px;
     color: var(--primary-red);
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.major-support-note {
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #fff8ea;
+    border-left: 3px solid var(--secondary-gold);
+    color: #6f4700;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.major-support-note strong {
+    display: inline;
+    margin-right: 6px;
+    color: #9a1f1f;
     font-size: 12px;
 }
 
